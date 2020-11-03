@@ -79,7 +79,7 @@ public class HotelReservation {
                 .max((hotel1, hotel2) -> hotel1.getKey().getRatings() > hotel2.getKey().getRatings() ? 1 : -1)
                 .get().getKey();
 
-        System.out.println("Hotel name: " + hotel.getHotelName());
+        System.out.println("Hotel name: " + hotel.getHotelName()+ " Ratings: "+hotel.getRatings());
         return hotel.getHotelName();
     }
 
