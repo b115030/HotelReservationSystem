@@ -1,10 +1,12 @@
 public class Hotel {
     private String hotelName;
     private int regularDailyRate;
+    private int regularWeekEndRate;
 
-    Hotel(String hotelName, int regularDailyRate) {
+    Hotel(String hotelName, int regularDailyRate, int regularWeekEndRate) {
         this.hotelName = hotelName;
         this.regularDailyRate = regularDailyRate;
+        this.regularWeekEndRate = regularWeekEndRate;
     }
 
     public String getHotelName() {
@@ -23,6 +25,15 @@ public class Hotel {
 
     public void setRegularDailyRate(int regularDailyRate) {
         this.regularDailyRate = regularDailyRate;
+    }
+
+    public int getRegularWeekEndRate() {
+        return regularWeekEndRate;
+    }
+
+
+    public void setRegularWeekEndRate(int regularWeekEndRate) {
+        this.regularWeekEndRate = regularWeekEndRate;
     }
 
     @Override
