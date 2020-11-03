@@ -89,4 +89,10 @@ public class HotelReservation {
         String hotelName = findBestCheapestHotelInMap();;
         return hotelName;
     }
+    public String findBestRatedHotel(ArrayList<Hotel> hotels) {
+        Hotel hotel = hotels.stream()
+                .max(Comparator.comparing(Hotel::getRegularDailyRate))
+                .orElse(null);
+        return hotel.getHotelName();
+    }
 }
