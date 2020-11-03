@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class HotelReservationTest {
     Hotel hotel1 = new Hotel("LakeWood",110, 90,3);
-    Hotel hotel2 = new Hotel("Bridgewood",160, 150,4);
+    Hotel hotel2 = new Hotel("Bridgewood",150, 150,4);
     Hotel hotel3 = new Hotel("Ridgewood.",220, 150,5);
     HotelReservation hotelReservation = null;
     ArrayList<Hotel> hotelList;

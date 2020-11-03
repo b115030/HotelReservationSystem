@@ -7,7 +7,7 @@ import java.util.*;
 
 public class HotelReservation {
     private long numDates;
-    Map<String, Integer> hotelNameToCostMap = new HashMap<>();
+    Map<Hotel, Integer> hotelNameToCostMap = new HashMap<>();
     private int hotelCost;
 
     public boolean printWelcome() {
@@ -52,7 +52,7 @@ public class HotelReservation {
             }
         }
         System.out.println("data " + hotel.getHotelName() +" "+ hotelCost);
-        hotelNameToCostMap.put(hotel.getHotelName(), hotelCost);
+        hotelNameToCostMap.put(hotel, hotelCost);
     }
     public String findCheapestHotel(ArrayList<Hotel> hotels ) {
         Hotel hotelName = hotels.stream().min(Comparator.comparing(Hotel::getRegularDailyRate)).orElse(null);
@@ -60,13 +60,19 @@ public class HotelReservation {
         return hotelName.getHotelName();
     }
     // to find min cost among total cost of all hotels
-    public String findCheapestHotelInMap() {
-        String hotelName = hotelNameToCostMap.entrySet()
+    public String findBestCheapestHotelInMap() {
+        int minCost = hotelNameToCostMap.entrySet()
                 .stream()
                 .min(Map.Entry.comparingByValue())
+                .get().getValue();
+
+        Hotel hotel = hotelNameToCostMap.entrySet().stream()
+                .filter(hotelMap -> minCost == hotelMap.getValue())
+                .max((hotel1, hotel2) -> hotel1.getKey().getRatings() > hotel2.getKey().getRatings() ? 1 : -1)
                 .get().getKey();
-        System.out.println(hotelName);
-        return hotelName;
+
+        System.out.println("Hotel name: "+ hotel.getHotelName());
+        return hotel.getHotelName();
     }
 
     // returns the name of the hotel with min total cost
@@ -80,7 +86,7 @@ public class HotelReservation {
                 System.out.println("Exception msg: " + e.getMessage());
             }
         });
-        String hotelName = findCheapestHotelInMap();
+        String hotelName = findBestCheapestHotelInMap();;
         return hotelName;
     }
 }
