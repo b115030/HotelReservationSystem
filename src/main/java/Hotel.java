@@ -1,6 +1,9 @@
 public class Hotel {
-    public boolean printWelcome() {
-        System.out.println( "Welcome to the hotel reservation system." );
-        return true;
+    private String hotelName;
+    private int regularDailyRate;
+
+    Hotel(String hotelName, int regularDailyRate) {
+        this.hotelName = hotelName;
+        this.regularDailyRate = regularDailyRate;
     }
 }
