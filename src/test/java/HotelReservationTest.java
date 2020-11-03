@@ -35,12 +35,19 @@ public class HotelReservationTest {
     public void shouldReturnLakeWood_whenAllRegularDays() {
         String startDate = "03/11/2020";
         String endDate = "04/11/2020";
-        String hotelName = hotelReservation.findCheapestHotelByDates(startDate, endDate, hotelList);
+        String hotelName = hotelReservation.findCheapestHotelByDates(startDate, endDate, hotelList,false);
         Assert.assertEquals("LakeWood", hotelName);
     }
     @Test
     public void shouldReturnRidgewood_whenFindingBestRatedHotel() {
         String hotelName = hotelReservation.findBestRatedHotel(hotelList);
+        Assert.assertEquals("Ridgewood", hotelName);
+    }
+    @Test
+    public void shouldReturnRidgewood_whenAllRegularDays_forSpecialCustomers() {
+        String startDate = "11/09/2020";
+        String endDate = "12/09/2020";
+        String hotelName = hotelReservation.findCheapestHotelByDates(startDate, endDate, hotelList, true);
         Assert.assertEquals("Ridgewood", hotelName);
     }
 }
